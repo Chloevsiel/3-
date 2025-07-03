@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-
-public class Choose : MonoBehaviour
+public class ScoreData : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float TimerScore = 0;
     void Start()
     {
-        this.GetComponent<Button>().onClick.AddListener(onClick);
+        
     }
 
     // Update is called once per frame
-    void onClick()
+    void Update()
     {
-    SceneManager.LoadScene("Start");
-
+        
     }
 }
