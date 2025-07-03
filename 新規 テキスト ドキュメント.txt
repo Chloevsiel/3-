@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 public class BackGroundMover : MonoBehaviour
 {
     private const float k_maxLength = 1f;
-    private const string k_propName = "_MainTex";
+    private const string k_proName = "_MainTex";
 
     [SerializeField]
     private Vector2 m_offsetSpeed;
@@ -20,27 +21,29 @@ public class BackGroundMover : MonoBehaviour
         var image = GetComponent<Image>();
         m_copiedMaterial = image.material;
 
-        // ƒ}ƒeƒŠƒAƒ‹‚ªnull‚Ìê‡—áŠO
         Assert.IsNotNull(m_copiedMaterial);
     }
 
     private void Update()
     {
-        if (Time.timeScale == 0f)
+        if (Time.timeScale == 0f) 
         {
             return;
         }
 
-        // x‚Æy‚Ì’l‚ª0 ` 1‚ÅƒŠƒs[ƒg‚·‚é
+        // xã¨yã®å€¤ãŒ0~1ã§ãƒªãƒ”ãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
         var x = Mathf.Repeat(Time.time * m_offsetSpeed.x, k_maxLength);
         var y = Mathf.Repeat(Time.time * m_offsetSpeed.y, k_maxLength);
         var offset = new Vector2(x, y);
-        m_copiedMaterial.SetTextureOffset(k_propName, offset);
+        m_copiedMaterial,SetTextureOffset(k_propName, offset);
+        
     }
 
     private void OnDestroy()
     {
-        // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg”j‰ó‚Éƒ}ƒeƒŠƒAƒ‹‚ÌƒRƒs[‚àÁ‚µ‚Ä‚¨‚­
+        //ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç ´å£Šæ™‚ã«ãƒãƒ†ãƒªã‚¢ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚‚æ¶ˆã—ã¦ãŠã
+        Destroy(m_copiedMaterial);
         m_copiedMaterial = null;
     }
 }
+   
