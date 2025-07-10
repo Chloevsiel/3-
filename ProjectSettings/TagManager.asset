@@ -4,12 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - Bullet
+  - Spike
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
