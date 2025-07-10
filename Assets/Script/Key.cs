@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Key : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    public bool isPickedUp;
     private Vector2 vel;
     public float smoothTime;
 
-    public bool isPickedUp;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +21,14 @@ public class Key : MonoBehaviour
     {
         if (isPickedUp)
         {
-            transform.position = Vector2.SmoothDamp(transform.position, player.transform.position, ref vel, smoothTime);
+            Vector3 offset = new Vector3(0, 1, 0);
+            transform.position = Vector2.SmoothDamp(transform.position, player.transform.position + offset, ref vel, smoothTime);
         }
     }
 
-    private void OTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag ("Player")&& !isPickedUp)
+        if (other.gameObject.CompareTag("Player")&& !isPickedUp)
         {
             isPickedUp = true;
         }

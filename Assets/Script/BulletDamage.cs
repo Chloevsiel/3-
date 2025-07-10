@@ -4,32 +4,24 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
 {
-    public PlayerHealth pHealth;
-    public float damage;
-    // Start is called before the first frame update
+    public float damage = 1f;
+
     void Start()
     {
-
+        Destroy(gameObject, 3f); 
     }
-    void OTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            PlayerHealth pHealth = other.GetComponent<PlayerHealth>();
+            if (pHealth != null)
+            {
+                pHealth.health -= damage;
+            }
 
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        pHealth.health -= damage;
-    }
-
-    
 }

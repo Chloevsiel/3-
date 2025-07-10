@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 123889585316415143}
   - component: {fileID: 3205317564643069375}
-  - component: {fileID: 8106822598795057786}
   - component: {fileID: 6545987897863805086}
   m_Layer: 0
   m_Name: High DMG bullet
@@ -86,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8106822598795057786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359065047636728469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a298a14b4195e469bddefd08ef9010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pHealth: {fileID: 0}
-  damage: 4
 --- !u!61 &6545987897863805086
 BoxCollider2D:
   m_ObjectHideFlags: 0

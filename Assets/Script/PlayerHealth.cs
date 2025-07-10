@@ -5,30 +5,33 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health;
-    public float maxHealth;
-    public Image HealthBar;
+    public float health = 12f;
+    public float maxHealth = 12f;
+    public Image healthBar;
 
+    private bool isDead = false;
     public GameManager gameManager;
 
-    private bool isDead;
-
-    // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;   
+        maxHealth = health;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        HealthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        healthBar.fillAmount = Mathf.Clamp01(health / maxHealth);
 
         if (health <= 0 && !isDead)
         {
             isDead = true;
-            gameManager.gameOver();
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        gameManager.gameOver();
+
+        gameObject.SetActive(false);
     }
 }
