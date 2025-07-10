@@ -1096,8 +1096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Horizontal: 0
-  speed: 5
-  jumpingPower: 10
+  speed: 9
+  jumpingPower: 23
   rb: {fileID: 801187870}
   groundCheck: {fileID: 1485008112}
   groundLayer:
@@ -1153,7 +1153,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 801187867}
   isPickedUp: 0
-  smoothTime: 2
+  smoothTime: 0.2
 --- !u!212 &1367377726
 SpriteRenderer:
   m_ObjectHideFlags: 0
