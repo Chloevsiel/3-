@@ -6,36 +6,32 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverUI;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public void gameOver()
+    public void GameOver()
     {
         gameOverUI.SetActive(true);
+        Time.timeScale = 0f; // ÔÝÍ£ÓÎÏ·
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-    public void restart()
+    public void Restart()
     {
+        Time.timeScale = 1f; // »Ö¸´ÓÎÏ·
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void start()
+    public void StartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Start");
     }
 
-    public void quit()
+    public void Quit()
     {
         Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // ÔÚ±à¼­Æ÷ÀïÍ£Ö¹²¥·Å
+#endif
     }
-
-
 }

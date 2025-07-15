@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    public PlayerHealth pHealth;
-    public float damage;
-    // Start is called before the first frame update
-    void Start()
-    {
+         public float damage = 2f;
 
-    }
-    void OTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            PlayerHealth pHealth = other.GetComponent<PlayerHealth>();
+            PlayerRespawn respawn = other.GetComponent<PlayerRespawn>();
 
-            Destroy(gameObject);
+            if (pHealth != null)
+            {
+                pHealth.health -= damage;
+
+                if (pHealth.health > 0 && respawn != null)
+                {
+                    other.transform.position = respawn.lastSafePosition;
+                }
+                // 如果血量 <= 0，会由 PlayerHealth 脚本自行处理死亡
+            }
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        pHealth.health -= damage;
-    }
-
 }

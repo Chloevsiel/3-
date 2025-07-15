@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        gameManager.gameOver();
+        gameManager.GameOver();
 
         gameObject.SetActive(false);
     }
