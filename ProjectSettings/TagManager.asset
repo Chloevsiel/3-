@@ -8,6 +8,8 @@ TagManager:
   - Spike
   - Key
   - Door
+  - Ground
+  - DeadZone
   layers:
   - Default
   - TransparentFX

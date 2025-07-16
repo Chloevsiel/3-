@@ -9,6 +9,7 @@ public class FragileGround : MonoBehaviour
 
     private Collider2D col;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private bool isTriggered = false;
 
@@ -16,6 +17,7 @@ public class FragileGround : MonoBehaviour
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,16 +31,20 @@ public class FragileGround : MonoBehaviour
 
     private IEnumerator BreakAndRespawn()
     {
+        // 触发破碎动画
+        animator.SetBool("isBreaking", true);
+
         yield return new WaitForSeconds(delayBeforeDestroy);
 
-        // 让平台“消失”，这里不是Destroy，而是禁用碰撞和隐藏
+        // 禁用碰撞和隐藏（动画应已完成破碎效果）
         col.enabled = false;
         spriteRenderer.enabled = false;
 
         // 等待复原时间
         yield return new WaitForSeconds(respawnDelay);
 
-        // 平台复原
+        // 重置动画和状态
+        animator.SetBool("isBreaking", false);
         col.enabled = true;
         spriteRenderer.enabled = true;
 

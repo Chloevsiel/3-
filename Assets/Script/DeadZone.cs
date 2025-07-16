@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-         public float damage = 2f;
+    public float damage = 2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,9 +15,9 @@ public class DeadZone : MonoBehaviour
 
             if (pHealth != null)
             {
-                pHealth.health -= damage;
+                pHealth.TakeDamage(damage); // 调用 TakeDamage 函数来减血
 
-                if (pHealth.health > 0 && respawn != null)
+                if (pHealth.IsAlive() && respawn != null) // 你可以在 PlayerHealth 加一个 IsAlive() 公共方法
                 {
                     other.transform.position = respawn.lastSafePosition;
                 }
