@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Image healthBarImage;
 
-    [Header("ÎŞµĞÓë»÷ÍËÉèÖÃ")]
+    [Header("ï¿½Şµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float invincibleTime = 1f;
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.1f;
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMove playerMove;
 
-    [Header("ÒôĞ§")]
+    [Header("ï¿½ï¿½Ğ§")]
     public AudioSource audioSource;
     public AudioClip hurtClip;
 
@@ -64,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         health -= amount;
 
-        // ²¥·ÅÊÜÉËÒôĞ§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§
         PlayHurtSound();
 
         StartCoroutine(InvincibilityFlash());
@@ -99,7 +99,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         if (gameManager != null)
-            gameManager.GameOver();
+            gameManager.gameOver();
 
         gameObject.SetActive(false);
     }

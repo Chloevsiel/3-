@@ -222,3 +222,4 @@ MonoBehaviour:
   playerTag: Player
   deadZoneTag: DeadZone
   damage: 2
+  fallingSound: {fileID: 8300000, guid: da6bebfbc5a1c874685295e12476634e, type: 3}

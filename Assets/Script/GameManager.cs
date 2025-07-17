@@ -1,57 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public bool isGameOver = false;
 
-    void Start()
+    void Awake()
     {
-        // È·±£ gameOverUI ³õÊ¼Òş²Ø
-        if (gameOverUI != null)
-        {
-            gameOverUI.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("gameOverUI Î´·ÖÅä£¡");
-        }
+        Time.timeScale = 1f; // ä¿è¯æ¯æ¬¡å¯åŠ¨æ—¶æ¸¸æˆæ˜¯è¿è¡ŒçŠ¶æ€
     }
 
-    public void GameOver()
+    public void gameOver()
     {
-        if (gameOverUI != null)
-        {
-            gameOverUI.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("gameOverUI Î´·ÖÅä£¡");
-        }
-        Time.timeScale = 0f; // ÔİÍ£ÓÎÏ·
-        Debug.Log("ÓÎÏ·½áÊø£¬ÏÔÊ¾ GameOver UI");
+        isGameOver = true;
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f; // æš‚åœæ¸¸æˆ
     }
 
-    public void Restart()
+    public void restart()
     {
-        Debug.Log($"ÖØĞÂ¼ÓÔØ³¡¾°£º{SceneManager.GetActiveScene().name}");
-        Time.timeScale = 1f; // »Ö¸´ÓÎÏ·Ê±¼ä
+        Time.timeScale = 1f; // æ¢å¤æ—¶é—´
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void StartGame()
+    public void start()
     {
-        Debug.Log("¼ÓÔØ Start ³¡¾°");
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // é˜²æ­¢ä»æš‚åœçŠ¶æ€å¼€å§‹æ¸¸æˆ
         SceneManager.LoadScene("Start");
     }
 
-    public void Quit()
+    public void quit()
     {
-        Debug.Log("ÍË³öÓÎÏ·");
         Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // ÔÚ±à¼­Æ÷ÀïÍ£Ö¹²¥·Å
-#endif
     }
 }
